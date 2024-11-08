@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/jenkins-docker-pipeline.git'
+                git 'https://github.com/sammed-18/jenkins-docker-pipeline.git'
             }
         }
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("your_dockerhub_username/jenkins-java-app")
+                    dockerImage = docker.build("sammed18/jenkins-java-app")
                 }
             }
         }
