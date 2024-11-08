@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/sammed-18/jenkins-docker-pipeline.git'
+                // Specify the branch explicitly
+                git branch: 'main', url: 'https://github.com/sammed-18/jenkins-docker-pipeline.git'
             }
         }
         stage('Build Docker Image') {
@@ -17,7 +18,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'sammed18') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials') {
                         dockerImage.push("latest")
                     }
                 }
