@@ -4,23 +4,20 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                // Clone your GitHub repository
-                git 'https://github.com/sammed-18/jenkins-docker-pipeline.git'
+                git 'https://github.com/YOUR_USERNAME/jenkins-docker-pipeline.git'
             }
         }
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Build Docker image
-                    dockerImage = docker.build("sammed18/jenkins-java-app")
+                    dockerImage = docker.build("your_dockerhub_username/jenkins-java-app")
                 }
             }
         }
         stage('Push Docker Image') {
             steps {
                 script {
-                    // Push Docker image to Docker Hub
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'sammed18') {
                         dockerImage.push("latest")
                     }
                 }
